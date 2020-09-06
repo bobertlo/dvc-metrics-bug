@@ -4,3 +4,5 @@ will be able to run a pipeline.
 
 To create the `dvc.yaml`, run `make` or write the output of `gen-dvc-yaml.py` to `dvc.yaml`.
 
+I can't really release this code under an open license, but I'm okay with showing it since it's just
+a lot of pytorch boilerplate. There is no groundbreaking deep learning going on here ;)
