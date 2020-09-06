@@ -1,0 +1,47 @@
+test1-training-gen:
+  cmd: python training-gen.py test1
+  deps:
+  - path: data/test1
+    md5: a361b4df5d94546f0ec1f592d5f4a89a.dir
+  - path: training-gen.py
+    md5: 5fbd5def3478667c775a9273e2e5f7fe
+  params:
+    params.yaml:
+      test1.arch: test1
+      test1.data:
+        rawpath: data/test1
+        genpath: data/gen/test1
+        write_filter: crop
+  outs:
+  - path: data/gen/test1
+    md5: 8d07946f014165ac170d38d8363e0cfa.dir
+test1-train:
+  cmd: python train-model.py test1
+  deps:
+  - path: data/gen/test1
+    md5: 8d07946f014165ac170d38d8363e0cfa.dir
+  - path: train-model.py
+    md5: 88ba4f9852e6d2c443e2dffc212ecffc
+  params:
+    params.yaml:
+      test1.arch: test1
+      test1.training:
+        stages:
+        - lr: 0.0003
+          n: 1
+        outpath: cnndata/test1
+  outs:
+  - path: cnndata/test1
+    md5: 4d5816f5d8a104f2e7d2e5aa2844a477.dir
+test1-eval:
+  cmd: python evaluate-model.py test1 results/test1.csv metrics/test1.json
+  deps:
+  - path: cnndata/test1
+    md5: 4d5816f5d8a104f2e7d2e5aa2844a477.dir
+  - path: evaluate-model.py
+    md5: 32111a8609a2d8ceb2367a25c28f3d47
+  outs:
+  - path: metrics/test1.json
+    md5: 1cae9c4c6b92adc0a9f4fc3827e31d49
+  - path: results/test1.csv
+    md5: f131b163f30e88e4bdfe1fbd684dfd8d

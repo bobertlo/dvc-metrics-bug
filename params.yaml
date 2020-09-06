@@ -1,0 +1,10 @@
+test1:
+  data:
+    rawpath: data/test1
+    genpath: data/gen/test1
+    write_filter: crop
+  arch: test1
+  training:
+    stages:
+      [{lr: 0.0003, n: 1}]
+    outpath: cnndata/test1
