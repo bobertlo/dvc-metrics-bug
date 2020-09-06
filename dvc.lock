@@ -1,6 +1,8 @@
 test1-training-gen:
   cmd: python training-gen.py test1
   deps:
+  - path: cnn/architectures/test1.py
+    md5: 0740420712c070d53eeb0133c2e9e945
   - path: data/test1
     md5: 5f1f90cb2c87ad0ccb83e85aa7e801b9.dir
   - path: training-gen.py
@@ -18,6 +20,8 @@ test1-training-gen:
 test1-train:
   cmd: python train-model.py test1
   deps:
+  - path: cnn/architectures/test1.py
+    md5: 0740420712c070d53eeb0133c2e9e945
   - path: data/gen/test1
     md5: f4381fe1c647720b8e7ab151fd6ab35e.dir
   - path: train-model.py
@@ -32,16 +36,16 @@ test1-train:
         outpath: cnndata/test1
   outs:
   - path: cnndata/test1
-    md5: da778224fe39c2f5f14553fad5854cfe.dir
+    md5: 47e50118fdb09bc7014bca2c4e61b80d.dir
 test1-eval:
   cmd: python evaluate-model.py test1 results/test1.csv metrics/test1.json
   deps:
   - path: cnndata/test1
-    md5: da778224fe39c2f5f14553fad5854cfe.dir
+    md5: 47e50118fdb09bc7014bca2c4e61b80d.dir
   - path: evaluate-model.py
     md5: 32111a8609a2d8ceb2367a25c28f3d47
   outs:
   - path: metrics/test1.json
     md5: 36aca0071826446e7547e081dc91fe01
   - path: results/test1.csv
-    md5: 12e58b3b747ea059bf3bcdacf5ffc310
+    md5: 2feb92c5ff1efde32aa60bc5b04ec64a
