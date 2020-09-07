@@ -49,3 +49,75 @@ test1-eval:
     md5: 36aca0071826446e7547e081dc91fe01
   - path: results/test1.csv
     md5: 2feb92c5ff1efde32aa60bc5b04ec64a
+dbox1-training-gen:
+  cmd: python training-gen.py dbox1
+  deps:
+  - path: cnn/architectures/dbox1.py
+    md5: 1fabc15b9e4929470f143cbc507850c6
+  - path: data/dbox1
+    md5: 707e1f9425c6ff94c600e25473a64834.dir
+  - path: training-gen.py
+    md5: 5fbd5def3478667c775a9273e2e5f7fe
+  params:
+    params.yaml:
+      dbox1.arch: dbox1
+      dbox1.data:
+        rawpath: data/dbox1
+        genpath: data/gen/dbox1
+  outs:
+  - path: data/gen/dbox1
+    md5: 015b02b1d5e3bd9fb1cc7903c9869aa5.dir
+dbox1-train:
+  cmd: python train-model.py dbox1
+  deps:
+  - path: cnn/architectures/dbox1.py
+    md5: 1fabc15b9e4929470f143cbc507850c6
+  - path: data/gen/dbox1
+    md5: 015b02b1d5e3bd9fb1cc7903c9869aa5.dir
+  - path: train-model.py
+    md5: 88ba4f9852e6d2c443e2dffc212ecffc
+  params:
+    params.yaml:
+      dbox1.arch: dbox1
+      dbox1.training:
+        stages:
+        - lr: 0.0003
+          n: 4
+        - lr: 3e-05
+          n: 2
+        - lr: 3e-06
+          n: 2
+        outpath: cnndata/dbox1
+        cvt_gray: true
+        sets:
+          checked:
+          - checked
+          - checked-selected
+          unchecked:
+          - unchecked
+          - unchecked-selected
+          other:
+          - blank
+          - grayed-checked
+          - other
+          selected:
+          - checked-selected
+          - unchecked-selected
+          unselected:
+          - checked
+          - unchecked
+  outs:
+  - path: cnndata/dbox1
+    md5: 60a8993136676fec76ea857c4dc73720.dir
+dbox1-eval:
+  cmd: python evaluate-model.py dbox1 results/dbox1.csv metrics/dbox1.json
+  deps:
+  - path: cnndata/dbox1
+    md5: 60a8993136676fec76ea857c4dc73720.dir
+  - path: evaluate-model.py
+    md5: 32111a8609a2d8ceb2367a25c28f3d47
+  outs:
+  - path: metrics/dbox1.json
+    md5: e2093d502b2fa05a41f687830c8acd04
+  - path: results/dbox1.csv
+    md5: 4adac14eb35320ffac4732bec7b1878c

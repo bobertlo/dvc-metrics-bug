@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 simple_targets = [
-    "test1"
+    "test1",
+    "dbox1"
 ]
 
 targets = {

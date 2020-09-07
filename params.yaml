@@ -8,3 +8,21 @@ test1:
     stages:
       [{lr: 0.0003, n: 1}]
     outpath: cnndata/test1
+dbox1:
+   data:
+      rawpath: data/dbox1
+      genpath: data/gen/dbox1
+   arch: dbox1
+   training:
+      stages:
+         [{ lr: 0.0003, n: 4 }, { lr: 0.00003, n: 2 }, { lr: 0.000003, n: 2 }]
+      outpath: cnndata/dbox1
+      cvt_gray: True
+      sets:
+         {
+            "checked": ["checked", "checked-selected"],
+            "unchecked": ["unchecked", "unchecked-selected"],
+            "other": ["blank", "grayed-checked", "other"],
+            "selected": ["checked-selected", "unchecked-selected"],
+            "unselected": ["checked", "unchecked"],
+         }

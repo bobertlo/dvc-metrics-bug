@@ -1,1 +1,3 @@
 dvc.yaml
+/cnndata
+__pycache__
