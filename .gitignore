@@ -1,3 +1,4 @@
 dvc.yaml
 /cnndata
 __pycache__
+.vscode
