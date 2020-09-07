@@ -141,12 +141,11 @@ class Cache:
     def save_pickle(self):
         # Store data (serialize)
         if self.cachefile is not None:
-            with open(self.cachefile, 'wb') as handle:
-                pickle.dump(self.cache, handle,
-                            protocol=pickle.HIGHEST_PROTOCOL)
+            with open(self.cachefile, "wb") as handle:
+                pickle.dump(self.cache, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     def load_pickle(self):
-        with open(self.cachefile, 'rb') as handle:
+        with open(self.cachefile, "rb") as handle:
             self.cache = pickle.load(handle)
 
     def lookup(self, file):

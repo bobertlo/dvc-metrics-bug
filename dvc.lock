@@ -6,7 +6,7 @@ test1-training-gen:
   - path: data/test1
     md5: 5f1f90cb2c87ad0ccb83e85aa7e801b9.dir
   - path: training-gen.py
-    md5: 5fbd5def3478667c775a9273e2e5f7fe
+    md5: aa19e36c96dc38a5c513e707111493c3
   params:
     params.yaml:
       test1.arch: test1
@@ -57,7 +57,7 @@ dbox1-training-gen:
   - path: data/dbox1
     md5: 707e1f9425c6ff94c600e25473a64834.dir
   - path: training-gen.py
-    md5: 5fbd5def3478667c775a9273e2e5f7fe
+    md5: aa19e36c96dc38a5c513e707111493c3
   params:
     params.yaml:
       dbox1.arch: dbox1

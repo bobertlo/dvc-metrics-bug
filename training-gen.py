@@ -80,6 +80,7 @@ def filter_copy(infile, outfile):
     if not os.path.exists(outfile):
         shutil.copy(infile, outfile)
 
+
 def filter_crop(infile, outfile, crop_function):
     img = cv2.imread(infile)
     img = crop_function(img)

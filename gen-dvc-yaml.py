@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
 
-simple_targets = [
-    "test1",
-    "dbox1"
-]
+simple_targets = ["test1", "dbox1"]
 
-targets = {
-}
+targets = {}
 
 for t in simple_targets:
     targets[t] = {}
