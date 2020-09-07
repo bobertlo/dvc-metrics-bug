@@ -1,5 +1,5 @@
 dvc.yaml: gen-dvc-yaml.py
 	python gen-dvc-yaml.py > dvc.yaml
 
-repro:
+repro: dvc.yaml
 	dvc repro
